@@ -1,11 +1,18 @@
 from typing import List
 
 import numpy as np
-
-from kolasimagesearch.impl.feature_engine.subimage import SubImage
-from kolasimagesearch.impl.feature_engine.subimage_extractor import SubimageExtractor
+import dlib
 
 
-class DlibFaceDetector(SubimageExtractor):
-    def extract(self, image: np.ndarray) -> List[SubImage]:
-        return []
+class DlibFaceDetectorException(Exception):
+    pass
+
+
+class DlibFaceDetector:
+    def __init__(self):
+        self._detector = dlib.get_frontal_face_detector()
+
+    def detect(self, img_rgb: np.ndarray) -> List:
+        if img_rgb.ndim != 3 or img_rgb.shape[-1] != 3:
+            raise DlibFaceDetectorException("wrong image dimensions. Current shape {}".format(img_rgb.shape))
+        return self._detector(img_rgb, 1)
