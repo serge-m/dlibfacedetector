@@ -15,4 +15,5 @@ class DlibFaceDetector:
     def detect(self, img_rgb: np.ndarray) -> List:
         if img_rgb.ndim != 3 or img_rgb.shape[-1] != 3:
             raise DlibFaceDetectorException("wrong image dimensions. Current shape {}".format(img_rgb.shape))
-        return self._detector(img_rgb, 1)
+        detected = self._detector(img_rgb.copy(), 1)
+        return list(detected)
