@@ -1,3 +1,3 @@
 #!/bin/sh
 
-pytest . dlibfaceextractor/
+python -m pytest dlibfaceextractor/ dlibfaceextractor/
