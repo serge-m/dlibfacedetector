@@ -2,10 +2,10 @@ from typing import List
 
 import numpy as np
 
-from facedetector.aligned_face_extractor import AlignedFaceExtractor
-from facedetector.dlib_face_detector import DlibFaceDetector
+from dlibfaceextractor.aligned_face_extractor import AlignedFaceExtractor
+from dlibfaceextractor.dlib_face_detector import DlibFaceDetector
 from kolasimagecommon import SubImage
-from kolasimagesearch.impl.feature_engine.subimage_extractor import SubimageExtractor
+from kolasimagecommon import SubimageExtractor
 
 
 class DlibFaceExtractorException(Exception):

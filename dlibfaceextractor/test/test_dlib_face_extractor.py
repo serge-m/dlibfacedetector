@@ -3,15 +3,14 @@ from unittest.mock import call
 
 import numpy as np
 import pytest
-from PIL import Image
 
-
-from facedetector.dlib_face_extractor import DlibFaceExtractor, DlibFaceExtractorException
+from dlibfaceextractor.dlib_face_extractor import DlibFaceExtractor, DlibFaceExtractorException
+from dlibfaceextractor.test.common_test_objects import get_path_for_test_object, load_image_as_numpy_array
 from kolasimagecommon import SubImage
 
 
-@mock.patch('facedetector.dlib_face_extractor.DlibFaceDetector')
-@mock.patch('facedetector.dlib_face_extractor.AlignedFaceExtractor')
+@mock.patch('dlibfaceextractor.dlib_face_extractor.DlibFaceDetector')
+@mock.patch('dlibfaceextractor.dlib_face_extractor.AlignedFaceExtractor')
 class TestDlibFaceExtractor:
     def test_dlib_face_detector_with_wrong_dimensions(self, class_AlignedFaceExtractor, class_DlibFaceDetector):
         extractor = DlibFaceExtractor("path_model", 100)
@@ -40,8 +39,7 @@ class TestDlibFaceExtractor:
         class_AlignedFaceExtractor.return_value.extract_aligned_face.side_effect = [face1, face2]
         class_DlibFaceDetector.return_value.detect.return_value = [rect1, rect2]
         dst_img_size = 100
-        image = Image.open("./faces-pair-family-asia-huging-pretty-1822539.jpg")
-        image = np.asarray(image)
+        image = load_image_as_numpy_array(get_path_for_test_object("faces-pair-family-asia-huging-pretty-1822539.jpg"))
 
         extractor = DlibFaceExtractor("path_model", dst_img_size)
         result = extractor.extract(image)

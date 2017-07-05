@@ -1,0 +1,7 @@
+py>=1.4
+pytest>=3.0
+numpy>=1.11.3
+six>=1.10.0
+dlib>=19.4.0
+kolasimagecommon==0.0.1
+

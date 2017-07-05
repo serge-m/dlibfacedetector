@@ -1,9 +1,10 @@
 import numpy as np
 import pytest
-from PIL import Image
 
-from facedetector.dlib_face_detector import DlibFaceDetector, DlibFaceDetectorException
+from dlibfaceextractor.dlib_face_detector import DlibFaceDetector, DlibFaceDetectorException
 import dlib
+
+from dlibfaceextractor.test.common_test_objects import get_path_for_test_object, load_image_as_numpy_array
 
 
 class TestDlibFaceDetector:
@@ -27,10 +28,11 @@ class TestDlibFaceDetector:
         assert len(result) == 0
 
     def test_detector_works(self):
-        image = Image.open("./faces-pair-family-asia-huging-pretty-1822539.jpg")
-        image = np.asarray(image)
+        image = load_image_as_numpy_array(get_path_for_test_object("./faces-pair-family-asia-huging-pretty-1822539.jpg"))
 
         detector = DlibFaceDetector()
         result = detector.detect(image)
 
         assert result == [dlib.rectangle(384, 73, 446, 135), dlib.rectangle(361, 146, 436, 221)]
+
+
