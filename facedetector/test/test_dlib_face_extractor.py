@@ -7,7 +7,7 @@ from PIL import Image
 
 
 from facedetector.dlib_face_extractor import DlibFaceExtractor, DlibFaceExtractorException
-from impl.feature_engine.subimage import SubImage
+from kolasimagecommon import SubImage
 
 
 @mock.patch('facedetector.dlib_face_extractor.DlibFaceDetector')

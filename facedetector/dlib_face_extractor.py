@@ -4,7 +4,7 @@ import numpy as np
 
 from facedetector.aligned_face_extractor import AlignedFaceExtractor
 from facedetector.dlib_face_detector import DlibFaceDetector
-from kolasimagesearch.impl.feature_engine.subimage import SubImage
+from kolasimagecommon import SubImage
 from kolasimagesearch.impl.feature_engine.subimage_extractor import SubimageExtractor
 
 
